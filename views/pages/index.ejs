@@ -1,1 +1,48 @@
-<h1>Hi, I am <%= user.firstName  %></h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <main>
+      <aside>
+        <form id="numberOfItemsForm">
+          <h1>Quantity</h1>
+          <input
+            id="numberOfItemsInput"
+            type="number"
+            min="0"
+            max="10"
+            placeholder="Type here"
+          />
+        </form>
+      </aside>
+
+      <main>
+        <ul id="myList"></ul>
+      </main>
+    </main>
+
+    <script>
+      document
+        .getElementById("numberOfItemsInput")
+        .addEventListener("input", function () {
+          let num = this.value;
+          let list = document.getElementById("myList");
+          list.innerHTML = "";
+
+          for (let i = 1; i <= num; i += 1) {
+            let li = document.createElement("li");
+            li.innerText = i;
+            list.appendChild(li);
+          }
+        });
+
+      window.onload = function () {
+        document.getElementById("numberOfItemsForm").reset();
+      };
+    </script>
+  </body>
+</html>
